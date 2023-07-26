@@ -2,12 +2,13 @@
   <div class="webCamera">
     <div class="content">
       <video ref="videoRef" class="video" autoplay playsinline muted></video>
-      <canvas ref="canvasRef" class="canvasBox"></canvas>
+      <canvas ref="canvasRef" width="320" height="240"></canvas>
     </div>
 
     <div class="btnGroup">
       <span class="btn" @click="handleOpen">开启摄像头</span>
-      <span class="btn" @click="handlePhoto">拍照</span>
+      <span class="btn" @click="handlePhoto">截图</span>
+      <span class="btn primary" @click="handleClose">关闭</span>
     </div>
   </div>
 </template>
@@ -41,20 +42,39 @@ const handleOpen = async () => {
 const handlePhoto = () => {
   const context = canvasRef.value!.getContext('2d')
   if (context) {
-    context.drawImage(videoRef.value!, 0, 0, 120, 120)
+    context.drawImage(videoRef.value!, 0, 0, 320, 240)
   }
+}
+
+const closeCamera = () => {
+  const video = videoRef.value!
+  if (video.srcObject) {
+    const tracks = (video.srcObject as MediaStream).getTracks()
+    tracks.forEach((track) => {
+      track.stop()
+    })
+    video.srcObject = null
+  }
+}
+
+const closeCanvas = () => {
+  const context = canvasRef.value!.getContext('2d')
+  if (context) {
+    context.clearRect(0, 0, 320, 240)
+  }
+}
+
+const handleClose = () => {
+  closeCamera()
+  closeCanvas()
 }
 </script>
 
 <style scoped lang="less">
 .webCamera {
   .video {
-    width: 120px;
-    height: 120px;
-  }
-  .canvasBox {
-    width: 120px;
-    height: 120px;
+    width: 320px;
+    height: 240px;
   }
   .content {
     display: flex;
@@ -75,6 +95,10 @@ const handlePhoto = () => {
       & + .btn {
         margin-left: 10px;
       }
+    }
+
+    .primary {
+      background-color: #333;
     }
   }
 }
