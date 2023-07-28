@@ -1,0 +1,41 @@
+{
+    "keepSettings": {
+        "type": 2,
+        "amount": 60
+    },
+    "auditFilename": "audit.json",
+    "hashType": "md5",
+    "extension": "",
+    "files": [
+        {
+            "date": 1687765405942,
+            "name": "F:\\learning\\pnpms\\projects\\express\\logs\\20230626-access.log",
+            "hash": "39f2dd021881f4de5e4426e03ac69da1"
+        },
+        {
+            "date": 1687766067380,
+            "name": "F:\\learning\\pnpms\\projects\\express\\logs\\access-20230626.log.20230626",
+            "hash": "00237c7786d467f815d8f20f7092b2a1"
+        },
+        {
+            "date": 1687830245650,
+            "name": "F:\\learning\\pnpms\\projects\\express\\logs\\20230627-access.log",
+            "hash": "52e2a1d0ef742adb5a111b7dda079c81"
+        },
+        {
+            "date": 1688368473113,
+            "name": "F:\\learning\\pnpms\\projects\\express\\logs\\20230703-access.log",
+            "hash": "68176f6883aee0b9770c0727efef3f59"
+        },
+        {
+            "date": 1690438443630,
+            "name": "F:\\learning\\rtc\\projects\\express\\logs\\20230727-access.log",
+            "hash": "7a8255562ed4265fe4956069de15c620"
+        },
+        {
+            "date": 1690538141887,
+            "name": "F:\\learning\\rtc\\projects\\express\\logs\\20230728-access.log",
+            "hash": "d65bbeb21e905132ffe5f8f95ff51284"
+        }
+    ]
+}
