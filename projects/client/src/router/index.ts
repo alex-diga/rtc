@@ -14,6 +14,16 @@ const routes = [
     path: '/rtc',
     name: 'rtc',
     component: () => import('../view/webRtc/index.vue')
+  },
+  {
+    path: '/session',
+    name: 'session',
+    component: () => import('../view/webRtc/session.vue')
+  },
+  {
+    path: '/signaling',
+    name: 'signaling',
+    component: () => import('../view/webRtc/signaling.vue')
   }
 ]
 

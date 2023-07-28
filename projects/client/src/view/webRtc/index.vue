@@ -1,5 +1,6 @@
 <template>
-  <div class="webCamera">
+  <div class="webMedia">
+    <h1 class="back"><router-link to="/">返回</router-link></h1>
     <div class="content">
       <video ref="videoRef" class="video" autoplay playsinline muted></video>
       <canvas ref="canvasRef" width="320" height="240"></canvas>
@@ -7,6 +8,7 @@
 
     <div class="btnGroup">
       <span class="btn" @click="handleOpen">开启摄像头</span>
+      <span class="btn" @click="handleShare">屏幕共享</span>
       <span class="btn" @click="handlePhoto">截图</span>
       <span class="btn primary" @click="handleClose">关闭</span>
     </div>
@@ -24,7 +26,8 @@ const handleOpen = async () => {
     // 标准的API
     try {
       const mediaStream = await navigator.mediaDevices.getUserMedia({
-        video: true
+        audio: false, // 音频麦克风
+        video: { facingMode: 'user' } // 优先使用前置摄像头
       })
       const video = videoRef.value!
       video.srcObject = mediaStream
@@ -36,6 +39,25 @@ const handleOpen = async () => {
     }
   } else {
     alert('请打开摄像头')
+  }
+}
+
+const handleShare = async () => {
+  if (navigator?.mediaDevices?.getDisplayMedia) {
+    // 标准的API
+    try {
+      const mediaStream = await navigator.mediaDevices.getDisplayMedia({
+        audio: true,
+        video: true
+      })
+      const video = videoRef.value!
+      video.srcObject = mediaStream
+      video.onloadedmetadata = function () {
+        video.play()
+      }
+    } catch (e) {
+      console.error(e)
+    }
   }
 }
 
@@ -71,7 +93,12 @@ const handleClose = () => {
 </script>
 
 <style scoped lang="less">
-.webCamera {
+.webMedia {
+  .back {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+  }
   .video {
     width: 320px;
     height: 240px;

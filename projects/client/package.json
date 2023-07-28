@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "nanoid": "^4.0.2",
     "pinia": "^2.1.4",
     "pinia-plugin-persist": "^1.0.0",
     "vue": "^3.3.4",
