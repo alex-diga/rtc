@@ -1,0 +1,27 @@
+{
+  "name": "signalling",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon ./index.js",
+    "dev:once": "node ./index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "express": "~4.16.1",
+    "express-rate-limit": "^6.8.1",
+    "helmet": "^7.0.0",
+    "hsts": "^2.2.0",
+    "net": "^1.0.2",
+    "querystring": "^0.2.1",
+    "ws": "^8.13.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}
